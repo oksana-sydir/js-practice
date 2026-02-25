@@ -19,5 +19,6 @@
   "bugs": {
     "url": "https://github.com/oksana-sydir/js-practice/issues"
   },
-  "homepage": "https://github.com/oksana-sydir/js-practice#readme"
+  "homepage": "https://github.com/oksana-sydir/js-practice#readme",
+  "devDependencies": {}
 }
