@@ -20,5 +20,7 @@
     "url": "https://github.com/oksana-sydir/js-practice/issues"
   },
   "homepage": "https://github.com/oksana-sydir/js-practice#readme",
-  "devDependencies": {}
+  "devDependencies": {
+    "jest": "^30.3.0"
+  }
 }

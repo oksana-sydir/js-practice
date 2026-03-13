@@ -1,30 +1,32 @@
-async function fetchPost(postId) {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`);
-    return response;
+async function fetchPost(potId) {
+    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${potId}`);
+    const post = await response.json();
+     console.log(post);
 }
 
-fetchPost(1)
-.then((response) => response.json())
-.then((post) => console.log(post));
+async function fetchComments(potId) {
+    const response = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${potId}`);
+    const comments = await Promise.all([response.json()]);
+     console.log(comments);
+} 
 
-async function fetchComments({postId}) {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`);
-    return response;
+
+try {
+    fetchPost(1);
+    fetchComments(1);
+} catch (error) {
+    console.error("Error fetching data:", error);
 }
 
-fetchComments({postId: 1})
-.then((response) => response.json())
-.then((comments) => console.log(comments));
+async function fetchPostAndComments(potId) {  
+  Promise.all([fetch(`https://jsonplaceholder.typicode.com/posts/${potId}`), 
+               fetch(`https://jsonplaceholder.typicode.com/comments?postId=${potId}`)])
+    .then(([postResponse, commentsResponse]) => Promise.all([postResponse.json(), commentsResponse.json()]))
+    .then(([post, comments]) => {
+        console.log("Post:", post);
+        console.log("Comments:", comments);
+    })
+    .catch(error => console.error("Error fetching data:", error));
+}   
 
-async function getPostAndComments(postId) {
-    const postResponse = await fetchPost(postId);
-    const post = await postResponse.json();
-    console.log(post);
-
-    const commentsResponse = await fetchComments({postId});
-    const comments = await commentsResponse.json();
-    console.log(comments);
-}
-
-getPostAndComments(1)
-.then();
+fetchPostAndComments(1);

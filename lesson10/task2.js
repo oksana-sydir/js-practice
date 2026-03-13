@@ -1,20 +1,23 @@
-function fetchPost(postId) {
-    return new Promise((resolve) => {
-        fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`);
-    });
+// function fetchPost(reject) {
+//    return fetch("https://jsonplaceholder.typicode.com/posts/1");
+// }
+
+// fetchPost()
+// .then(response => response.json())
+// .then(post => console.log(post));
+
+function fetchPost(potId) {
+    return fetch(`https://jsonplaceholder.typicode.com/posts/${potId}`);
 }
 
 fetchPost(1)
 .then((response) => response.json())
 .then((post) => console.log(post));
 
-function fetchComments({postId}) {
-    return new Promise((resolve) => {
-        fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`)
-        .then((response) => response.json())
-        .then((comments) => console.log(comments));
-    });
+function fetchComments(potId) {
+    return Promise.all([fetch(`https://jsonplaceholder.typicode.com/comments?postId=${potId}`)]);
 }
 
-fetchComments({postId: 1})
-.then();
+fetchComments(1)
+.then(([response]) => response.json())
+.then((comments) => console.log(comments));

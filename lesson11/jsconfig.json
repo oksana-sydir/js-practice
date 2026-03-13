@@ -1,0 +1,11 @@
+// Source - https://stackoverflow.com/a/57874758
+// Posted by Diogo Rocha, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-03-12, License - CC BY-SA 4.0
+
+{
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    }
+}
